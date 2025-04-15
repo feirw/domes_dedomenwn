@@ -1,6 +1,6 @@
 /* This is the file CImplementation.c */
 #include <stdlib.h>
-#include "complex.h"
+#include "COMPLEX.h"
 
 struct complex { float Re; float Im; };
 

@@ -4,11 +4,14 @@
 #include <math.h>
 #include <stdlib.h>
 
-#include "complex.h"
+#include "COMPLEX.h"
 
 #define PI 3.141592625
 
 int main(int argc, char *argv[]) {
+    if(argc < 2){
+        return 1;
+    }
     int i, j, N = atoi(argv[1]);
     Complex t, x;
     printf("%dth complex roots of unity\n", N);

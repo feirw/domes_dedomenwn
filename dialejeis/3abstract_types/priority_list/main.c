@@ -1,36 +1,24 @@
-/* this is the main program */
 #include <stdio.h>
-#include "interface.h"
+#include "PQInterface.h"
 
-typedef PQItem SortingArray[MAXCOUNT];
-/* Note: MAXCOUNT is 10 */
-void PriorityQueueSort(SortingArray A) {
-    int i;
+int main() {
     PriorityQueue PQ;
     Initialize(&PQ);
-    for (i=0; i<MAXCOUNT; ++i){
-        Insert(A[i], &PQ);
-    } 
-    for (i=MAXCOUNT-1; i>=0; --i){
-        A[i]=Remove(&PQ);
-    } 
-}
 
-int SquareOf(int x) {
-    return x*x;
-}
+    PQItem inputItems[] = {15, 3, 22, 7, 9};
+    int n = sizeof(inputItems) / sizeof(PQItem);
 
-int main(void) {
-    int i; SortingArray A;
-    for (i=0; i<10; ++i){
-        A[i]=SquareOf(3*i-13);
-        printf("%d",A[i]);
+    printf("Εισαγωγή στοιχείων:\n");
+    for (int i = 0; i < n; ++i) {
+        printf("  ➤ Εισάγεται το: %d\n", inputItems[i]);
+        Insert(inputItems[i], &PQ);
     }
-    printf("\n");
-    PriorityQueueSort(A);
-    for (i=0; i<10; ++i) {
-        printf("%d",A[i]);
+
+    printf("\n Αφαίρεση στοιχείων κατά προτεραιότητα:\n");
+    while (!Empty(&PQ)) {
+        PQItem item = Remove(&PQ);
+        printf("  ➤ Αφαιρέθηκε το: %d\n", item);
     }
-    printf("\n");
+
     return 0;
 }
